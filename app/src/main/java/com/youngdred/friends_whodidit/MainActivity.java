@@ -10,6 +10,7 @@ import static com.youngdred.friends_whodidit.R.drawable.ross;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView correctAnswers = findViewById(R.id.tv_main_correct_answers);
-        TextView totalAnswers = (TextView) findViewById(R.id.tv_main_total_answers);
+        TextView totalAnswers = findViewById(R.id.tv_main_total_answers);
         Button endGame = findViewById(R.id.btn_main_end_game);
         ImageButton answer0 = findViewById(R.id.img_btn_main_answer_0);
         ImageButton answer1 = findViewById(R.id.img_btn_main_answer_1);
@@ -170,11 +171,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        endGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent summaryIntent= new Intent(MainActivity.this, FinishedGameSummary.class);
+                summaryIntent.putExtra("Correct Answers",String.valueOf(correctAnswers.getText()));
+                summaryIntent.putExtra("Total Answers",(String) totalAnswers.getText());
+                startActivity(summaryIntent);
+            }
+        });
     }
 
     public String addAnswer(int totalAnswers){
-        String totalString=String.valueOf(totalAnswers+1);
-        return totalString;
+        return String.valueOf(totalAnswers+1);
     }
 
 

@@ -11,6 +11,10 @@
     <string name="background_image">Background Image</string>
     <string name="question">This is an example question for this game.</string>
 
+
+    <string name="congrats">Joey would be proud of you:</string>
+    <string name="guess">You guessed correctly: </string>
+
     <string name="q1">This is question 1</string>
     <string name="q2">This is question 2</string>
     <string name="q3">This is question 3</string>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinishedGameSummary">
+
+    <ImageView
+        android:contentDescription="@string/background_image"
+        android:id="@+id/iv_summary_photo_cover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/friends_banner" />
+
+    <TextView
+        android:id="@+id/tv_summary_comment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/congrats"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_summary_photo_cover" />
+
+    <TextView
+        android:id="@+id/tv_summary_guess_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:paddingStart="40dp"
+        android:paddingEnd="0dp"
+        android:text="@string/guess"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_summary_comment" />
+
+    <TextView
+        android:id="@+id/tv_summary_correct_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_weight="1"
+        android:text="@string/zero"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_summary_guess_text"
+        app:layout_constraintTop_toTopOf="@+id/tv_summary_guess_text" />
+
+    <TextView
+        android:id="@+id/tv_summary_separator"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/separator"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_summary_correct_answers"
+        app:layout_constraintTop_toTopOf="@+id/tv_summary_correct_answers" />
+
+    <TextView
+        android:id="@+id/tv_summary_total_answers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/zero"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/tv_summary_separator"
+        app:layout_constraintTop_toTopOf="@+id/tv_summary_separator" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
