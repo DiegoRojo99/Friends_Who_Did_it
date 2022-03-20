@@ -98,8 +98,8 @@ public class GameActivity extends AppCompatActivity {
                         }
                         totalAnswers.setText(addAnswer(Integer.parseInt((String) totalAnswers.getText())));
                         answerSelected=-1;
-                        currentQuestionIndex=0;
-                        questionText.setText(questionBank[currentQuestionIndex].questionText);
+
+                        endGameMethod((String) correctAnswers.getText(),(String) totalAnswers.getText());
                     }
                 }else{
                     if(answerSelected>=0&&answerSelected<4){
