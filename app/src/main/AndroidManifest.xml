@@ -4,6 +4,7 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -11,6 +12,9 @@
         android:theme="@style/Theme.Friends_WhoDidIt">
         <activity
             android:name=".FinishedGameSummary"
+            android:exported="true" />
+        <activity
+            android:name=".GameActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
