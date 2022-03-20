@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Friends: Who Did it?</string>
+    <string name="zero">0</string>
+    <string name="separator">/</string>
+    <string name="submit">Submit Answer</string>
+    <string name="end_game_text">End Game</string>
+    <string name="answer0">Answer 0</string>
+    <string name="answer1">Answer 1</string>
+    <string name="answer2">Answer 2</string>
+    <string name="answer3">Answer 3</string>
+    <string name="background_image">Background Image</string>
+    <string name="question">This is an example question for this game.</string>
+
+    <string name="q1">This is question 1</string>
+    <string name="q2">This is question 2</string>
+    <string name="q3">This is question 3</string>
+    <string name="q4">This is question 4</string>
+    <string name="q5">This is question 5</string>
+    <string name="q6">This is question 6</string>
+    <string name="q7">This is question 7</string>
+
+
+</resources>
