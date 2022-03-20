@@ -174,12 +174,18 @@ public class MainActivity extends AppCompatActivity {
         endGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent summaryIntent= new Intent(MainActivity.this, FinishedGameSummary.class);
-                summaryIntent.putExtra("Correct Answers",String.valueOf(correctAnswers.getText()));
-                summaryIntent.putExtra("Total Answers",(String) totalAnswers.getText());
-                startActivity(summaryIntent);
+                String totalA=(String) totalAnswers.getText();
+                String correctA=(String) correctAnswers.getText();
+                endGameMethod(correctA,totalA);
             }
         });
+    }
+
+    public void endGameMethod(String c, String t){
+        Intent summaryIntent= new Intent(MainActivity.this, FinishedGameSummary.class);
+        summaryIntent.putExtra("Correct Answers",c);
+        summaryIntent.putExtra("Total Answers",t);
+        startActivity(summaryIntent);
     }
 
     public String addAnswer(int totalAnswers){
