@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Friends_WhoDidIt">
         <activity
+            android:name=".StatsActivity"
+            android:exported="true" />
+        <activity
             android:name=".FinishedGameSummary"
             android:exported="true" />
         <activity
