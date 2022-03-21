@@ -26,6 +26,8 @@
     <string name="q7">This is question 7</string>
 
 
+    <string name="save_stats">Save Stats</string>
+    <string name="username">Username</string>
     <string name="player_name">Young Dred</string>
     <string name="player_name_text">Player Name</string>
     <string name="points">Points</string>
