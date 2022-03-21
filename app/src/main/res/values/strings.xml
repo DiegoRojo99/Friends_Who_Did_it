@@ -26,4 +26,9 @@
     <string name="q7">This is question 7</string>
 
 
+    <string name="player_name">Young Dred</string>
+    <string name="player_name_text">Player Name</string>
+    <string name="points">Points</string>
+
+
 </resources>
