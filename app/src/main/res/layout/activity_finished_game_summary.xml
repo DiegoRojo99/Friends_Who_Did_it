@@ -96,14 +96,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_summary_username" />
 
-    <TextView
-        android:id="@+id/tv_summary_points_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/points"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_summary_save_stats" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

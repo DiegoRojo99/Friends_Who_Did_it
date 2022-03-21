@@ -3,9 +3,14 @@ package com.youngdred.friends_whodidit;
 import android.content.Context;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Game implements Serializable {
 
@@ -32,14 +37,5 @@ public class Game implements Serializable {
         this.points = points;
     }
 
-    public void saveGameStats(File fts){
 
-        try (FileOutputStream fos = new FileOutputStream(fts);
-            ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-            oos.writeObject(this);
-            oos.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

@@ -32,50 +32,35 @@ public class FinishedGameSummary extends AppCompatActivity {
         TextView correctAnswerTextView = findViewById(R.id.tv_summary_correct_answers);
         TextView totalAnswerTextView = findViewById(R.id.tv_summary_total_answers);
 
-        EditText usernameEditText=findViewById(R.id.et_summary_username);
+        EditText usernameEditText=(EditText)findViewById(R.id.et_summary_username);
+        usernameEditText.setText("");
         Button saveStatsButton = findViewById(R.id.button_summary_save_stats);
 
         correctAnswerTextView.setText(correctAnswers);
         totalAnswerTextView.setText(String.valueOf(totalAnswers));
 
-        TextView pointsTest=findViewById(R.id.tv_summary_points_test);
-
-        String username= String.valueOf(usernameEditText.getText());
-        int points=10*(Integer.parseInt(correctAnswers));
-
-        Game gameStats = new Game(username,points);
-
         saveStatsButton.setOnClickListener(
                 view -> {
-                    pointsTest.setText(String.valueOf(2000));
 
+                    String username= String.valueOf(usernameEditText.getText().toString());
+                    int points=10*(Integer.parseInt(correctAnswers));
+                    Game gameStats = new Game(username,points);
 
+                    File path=getApplicationContext().getFilesDir();
+                    File fileToSave= new File(path, "stats.txt");
 
-                    try {
-                        File path=getApplicationContext().getFilesDir();
-                        File fileToSave= new File(path, "stats.txt");
-                        gameStats.saveGameStats(fileToSave);
+                    FileReaderAndWriter fr= new FileReaderAndWriter();
+                    fr.writeGame(fileToSave, gameStats);
 
-                        Game gm1=getGameStats(fileToSave);
-                        pointsTest.setText(String.valueOf(gm1.getPoints()));
+                    Intent sendToStats= new Intent(FinishedGameSummary.this, StatsActivity.class);
+                    startActivity(sendToStats);
 
-                    } catch (IOException | ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
                 }
 
         );
 
     }
 
-    public static Game getGameStats(File file) throws IOException, ClassNotFoundException {
-        Game result = null;
-        try (FileInputStream fis = new FileInputStream(file);
-             ObjectInputStream ois = new ObjectInputStream(fis)) {
-            result = (Game) ois.readObject();
-        }
-        return result;
-    }
 
 
 }
