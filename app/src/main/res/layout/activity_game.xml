@@ -219,14 +219,4 @@
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/btn_main_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/submit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_main_end_game"
-        app:layout_constraintStart_toEndOf="@+id/tv_main_total_answers"
-        app:layout_constraintTop_toTopOf="@+id/btn_main_end_game" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
