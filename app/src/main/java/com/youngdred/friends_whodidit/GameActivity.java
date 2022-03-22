@@ -22,8 +22,28 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private final Question[] questionBank=new Question[]{
         new Question("Who said \"we were on a break\"","Chandler","Ross","Monica",
                 "Phoebe",0,1),
-        new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
-                    "Rachel",1,3)
+            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
+                    "Rachel",1,3),
+            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
+                    "Rachel",2,3),
+            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
+                    "Rachel",3,3),
+            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
+                    "Rachel",4,3),
+            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
+                    "Rachel",5,3),
+            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
+                    "Rachel",6,3),
+            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
+                    "Rachel",7,3),
+            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
+                    "Rachel",8,3),
+            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
+                    "Rachel",9,3),
+            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
+                    "Rachel",10,3),
+            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
+                    "Rachel",11,3)
     };
 
     int bankSize=questionBank.length;
@@ -32,6 +52,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        loadLevelStats();
 
         Button endGame = findViewById(R.id.btn_main_end_game);
         ImageButton answer0 = findViewById(R.id.img_btn_main_answer_0);
@@ -48,6 +70,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         endGame.setOnClickListener(this);
     }
 
+    public void loadLevelStats(){
+       if(getIntent().getStringExtra("Points")!=null){
+           Intent getLevelIntent=getIntent();
+           String points=getLevelIntent.getStringExtra("Points");
+           String level=getLevelIntent.getStringExtra("Level");
+
+           TextView pointsTv=findViewById(R.id.tv_game_points_number);
+           pointsTv.setText(points);
+           TextView levelTv=findViewById(R.id.tv_game_level_number);
+           levelTv.setText(level);
+       }
+    }
+
     public void updatePoints(){
         TextView pointsTV = findViewById(R.id.tv_game_points_number);
         int points = Integer.parseInt((String) pointsTV.getText())+10;
@@ -55,11 +90,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void endGameMethod(){
-        TextView catv = findViewById(R.id.tv_main_correct_answers);
-        String correctAnswersNumber = (String) (catv.getText());
-        TextView tatv = findViewById(R.id.tv_main_total_answers);
-        String totalAnswersNumber = (String) (tatv.getText());
-
         TextView pointsTV = findViewById(R.id.tv_game_points_number);
         String finalScore= (String) pointsTV.getText();
 
@@ -70,6 +100,27 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         summaryIntent.putExtra("Final Score",finalScore);
         summaryIntent.putExtra("Level",level);
         startActivity(summaryIntent);
+    }
+
+    public void nextLevel(){
+        TextView pointsTV = findViewById(R.id.tv_game_points_number);
+        String finalScore= (String) pointsTV.getText();
+
+        TextView levelTV=findViewById(R.id.tv_game_level_number);
+        String level=(String) levelTV.getText();
+
+        int points=Integer.parseInt(finalScore);
+        int levelInt=Integer.parseInt(level);
+
+        int pointsMinusLevel=points-(100*levelInt);
+
+        if(pointsMinusLevel>=0){
+            Intent summaryIntent= new Intent(GameActivity.this, NextLevelActivity.class);
+            summaryIntent.putExtra("Points",finalScore);
+            summaryIntent.putExtra("Level",level);
+            startActivity(summaryIntent);
+        }
+
     }
 
     public void addAnswer(boolean correct){
@@ -164,7 +215,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
 
-           updateQuestion();
+            nextLevel();
+            updateQuestion();
 
         }
 
