@@ -12,17 +12,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     int answerSelected=-1;
     int currentQuestionIndex=0;
 
-    private Question[] questionBank=new Question[]{
+    private final Question[] questionBank=new Question[]{
         new Question("Who said \"we were on a break\"","Chandler","Ross","Monica",
                 "Phoebe",0,1),
         new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
@@ -36,19 +33,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        TextView correctAnswers = findViewById(R.id.tv_main_correct_answers);
-        TextView totalAnswers = findViewById(R.id.tv_main_total_answers);
         Button endGame = findViewById(R.id.btn_main_end_game);
         ImageButton answer0 = findViewById(R.id.img_btn_main_answer_0);
         ImageButton answer1 = findViewById(R.id.img_btn_main_answer_1);
         ImageButton answer2 = findViewById(R.id.img_btn_main_answer_2);
         ImageButton answer3 = findViewById(R.id.img_btn_main_answer_3);
-
-        ImageView cover = findViewById(R.id.imv_main_game_cover);
-        TextView pointsNumberText = findViewById(R.id.tv_game_points_number);
-        TextView levelNumberText = findViewById(R.id.tv_game_level_number);
-
-        TextView questionText = findViewById(R.id.tv_main_question_text);
 
         updateQuestion();
 
@@ -56,26 +45,41 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         answer1.setOnClickListener(this);
         answer2.setOnClickListener(this);
         answer3.setOnClickListener(this);
-
-        endGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String totalA=(String) totalAnswers.getText();
-                String correctA=(String) correctAnswers.getText();
-                endGameMethod(correctA,totalA);
-            }
-        });
+        endGame.setOnClickListener(this);
     }
 
-    public void endGameMethod(String c, String t){
+    public void updatePoints(){
+        TextView pointsTV = findViewById(R.id.tv_game_points_number);
+        int points = Integer.parseInt((String) pointsTV.getText())+10;
+        pointsTV.setText(String.valueOf(points));
+    }
+
+    public void endGameMethod(){
+        TextView catv = findViewById(R.id.tv_main_correct_answers);
+        String correctAnswersNumber = (String) (catv.getText());
+        TextView tatv = findViewById(R.id.tv_main_total_answers);
+        String totalAnswersNumber = (String) (tatv.getText());
+
         Intent summaryIntent= new Intent(GameActivity.this, FinishedGameSummary.class);
-        summaryIntent.putExtra("Correct Answers",c);
-        summaryIntent.putExtra("Total Answers",t);
+        summaryIntent.putExtra("Correct Answers",correctAnswersNumber);
+        summaryIntent.putExtra("Total Answers",totalAnswersNumber);
         startActivity(summaryIntent);
     }
 
-    public String addAnswer(int totalAnswers){
-        return String.valueOf(totalAnswers+1);
+    public void addAnswer(boolean correct){
+
+        TextView correctAnswersTV = findViewById(R.id.tv_main_correct_answers);
+        TextView totalAnswersTV = findViewById(R.id.tv_main_total_answers);
+
+        int correctAnswers=Integer.parseInt((String) correctAnswersTV.getText());
+        int totalAnswers=Integer.parseInt((String) correctAnswersTV.getText());
+
+        if(correct){
+            correctAnswersTV.setText(String.valueOf(correctAnswers+1));
+            updatePoints();
+        }
+        totalAnswersTV.setText(String.valueOf(totalAnswers+1));
+
     }
 
     public void updateQuestion(){
@@ -140,36 +144,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 view.getId()==R.id.img_btn_main_answer_2||
                 view.getId()==R.id.img_btn_main_answer_3){
 
-
-            TextView correctAnswers = findViewById(R.id.tv_main_correct_answers);
-            TextView totalAnswers = findViewById(R.id.tv_main_total_answers);
-            TextView questionText = findViewById(R.id.tv_main_question_text);
-
-
             if(bankSize==currentQuestionIndex+1){
                 if(answerSelected>=0&&answerSelected<4){
-                    if(questionBank[currentQuestionIndex].correctAnswer==answerSelected){
-                        correctAnswers.setText(addAnswer(Integer.parseInt((String) correctAnswers.getText())));
-                    }
-                    totalAnswers.setText(addAnswer(Integer.parseInt((String) totalAnswers.getText())));
+                    addAnswer(questionBank[currentQuestionIndex].correctAnswer == answerSelected);
                     answerSelected=-1;
-
-                    endGameMethod((String) correctAnswers.getText(),(String) totalAnswers.getText());
+                    endGameMethod();
                 }
             }else{
                 if(answerSelected>=0&&answerSelected<4){
-                    if(questionBank[currentQuestionIndex].correctAnswer==answerSelected){
-                        correctAnswers.setText(addAnswer(Integer.parseInt((String) correctAnswers.getText())));
-                    }
-                    totalAnswers.setText(addAnswer(Integer.parseInt((String) totalAnswers.getText())));
+                    addAnswer(questionBank[currentQuestionIndex].correctAnswer == answerSelected);
                     answerSelected=-1;
                     currentQuestionIndex++;
-                    questionText.setText(questionBank[currentQuestionIndex].questionText);
                 }
             }
 
            updateQuestion();
 
+        }
+
+        if(view.getId()==R.id.btn_main_end_game){
+            endGameMethod();
         }
     }
 }
