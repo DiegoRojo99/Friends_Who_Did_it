@@ -2,9 +2,6 @@ package com.youngdred.friends_whodidit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.youngdred.friends_whodidit.Game;
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,11 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 public class FinishedGameSummary extends AppCompatActivity {
 
@@ -52,7 +44,7 @@ public class FinishedGameSummary extends AppCompatActivity {
                     FileReaderAndWriter fr= new FileReaderAndWriter();
                     fr.writeGame(fileToSave, gameStats);
 
-                    Intent sendToStats= new Intent(FinishedGameSummary.this, StatsActivity.class);
+                    Intent sendToStats= new Intent(FinishedGameSummary.this, LeaderboardActivity.class);
                     startActivity(sendToStats);
 
                 }

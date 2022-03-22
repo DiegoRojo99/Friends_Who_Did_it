@@ -6,34 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/iv_main_background_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/fountain" />
+
     <Button
         android:id="@+id/btn_main_play_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="@string/play_game"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_main_cover_banner" />
-
-    <ImageView
-        android:id="@+id/iv_main_cover_banner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/play_game"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/friends_banner" />
+        android:layout_marginTop="32dp"
+        android:text="@string/play_game"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_leaderboard"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_leaderboard"
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_game_title" />
 
     <Button
-        android:id="@+id/btn_main_stats"
+        android:id="@+id/btn_main_leaderboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="@string/stats"
+        android:text="@string/leaderboard"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_play_game" />
+
+    <Button
+        android:id="@+id/btn_main_stats"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/stats"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_leaderboard"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_leaderboard"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_leaderboard" />
+
+    <TextView
+        android:id="@+id/tv_main_game_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/app_name"
+        android:textColor="#FDFDFD"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

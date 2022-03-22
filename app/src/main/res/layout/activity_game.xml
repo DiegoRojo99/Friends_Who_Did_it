@@ -7,21 +7,71 @@
     tools:context=".GameActivity">
 
 
+    <ImageView
+        android:id="@+id/imv_main_game_cover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="false"
+        android:contentDescription="@string/background_image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fountain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_game_pll_stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_game_points_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/points_zero"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/iv_game_lives_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/lives_left"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_game_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/level_one"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tv_main_question_text"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="32dp"
+        android:background="#FFFFFF"
         android:contentDescription="@string/question"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="@string/question"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/ll_main_answers_0_1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imv_main_game_cover" />
+        app:layout_constraintTop_toBottomOf="@+id/ll_game_pll_stats" />
 
     <TextView
         android:id="@+id/tv_main_correct_answers"
@@ -66,12 +116,48 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <LinearLayout
+        android:id="@+id/ll_main_answers_0_1"
+        android:layout_width="0dp"
+        android:layout_height="128dp"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/ll_main_answers_2_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_main_question_text">
+
+        <ImageButton
+            android:id="@+id/img_btn_main_answer_0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/answer0"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/joey" />
+
+        <ImageButton
+            android:id="@+id/img_btn_main_answer_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/answer1"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@drawable/phoebe" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/ll_main_answers_2_3"
         android:layout_width="0dp"
         android:layout_height="128dp"
-        android:layout_marginBottom="8dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/btn_main_end_game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ll_main_answers_0_1">
@@ -102,56 +188,6 @@
             android:scaleType="centerCrop"
             tools:srcCompat="@drawable/rachel" />
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_main_answers_0_1"
-        android:layout_width="0dp"
-        android:layout_height="128dp"
-        android:layout_marginBottom="1dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/ll_main_answers_2_3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_question_text">
-
-        <ImageButton
-            android:id="@+id/img_btn_main_answer_0"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/answer0"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@drawable/joey" />
-
-        <ImageButton
-            android:id="@+id/img_btn_main_answer_1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_marginBottom="4dp"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/answer1"
-            android:scaleType="centerInside"
-            tools:srcCompat="@drawable/phoebe" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imv_main_game_cover"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="false"
-        android:contentDescription="@string/background_image"
-        android:scaleType="fitXY"
-        android:src="@drawable/friends_banner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button

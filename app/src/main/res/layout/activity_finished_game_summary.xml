@@ -84,7 +84,9 @@
         android:text="@string/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_summary_guess_text" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_summary_guess_text"
+        android:autofillHints="username"
+        android:labelFor="@+id/et_summary_username"/>
 
     <Button
         android:id="@+id/button_summary_save_stats"
