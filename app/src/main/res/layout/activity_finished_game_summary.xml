@@ -7,95 +7,93 @@
     tools:context=".FinishedGameSummary">
 
     <ImageView
+        android:id="@+id/iv_summary_photo_background"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
         android:contentDescription="@string/background_image"
-        android:id="@+id/iv_summary_photo_cover"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/friends_banner" />
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/fountain" />
 
-    <TextView
-        android:id="@+id/tv_summary_comment"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/congrats"
-        android:textAlignment="center"
-        android:textSize="24sp"
+        android:layout_marginTop="300dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_summary_photo_cover" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tv_summary_guess_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:paddingStart="40dp"
-        android:paddingEnd="0dp"
-        android:text="@string/guess"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_summary_comment" />
+        <TextView
+            android:id="@+id/tv_summary_level_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/level"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tv_summary_correct_answers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_weight="1"
-        android:text="@string/zero"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_summary_guess_text"
-        app:layout_constraintTop_toTopOf="@+id/tv_summary_guess_text" />
+        <TextView
+            android:id="@+id/tv_summary_level_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/one"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/tv_summary_separator"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/separator"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_summary_correct_answers"
-        app:layout_constraintTop_toTopOf="@+id/tv_summary_correct_answers" />
+        <TextView
+            android:id="@+id/tv_summary_final_score_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/final_Score"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp" />
 
-    <TextView
-        android:id="@+id/tv_summary_total_answers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/zero"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/tv_summary_separator"
-        app:layout_constraintTop_toTopOf="@+id/tv_summary_separator" />
+        <TextView
+            android:id="@+id/tv_summary_final_score_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="34sp" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_summary_username"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="@string/username"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_summary_guess_text"
-        android:autofillHints="username"
-        android:labelFor="@+id/et_summary_username"/>
+        android:layout_marginTop="48dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:layout_editor_absoluteX="24dp">
 
-    <Button
-        android:id="@+id/button_summary_save_stats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/save_stats"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_summary_username" />
+        <Button
+            android:id="@+id/btn_summary_main_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:text="@string/main_menu"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_summary_new_game"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_weight="1"
+            android:text="@string/new_game"
+            android:textSize="16sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

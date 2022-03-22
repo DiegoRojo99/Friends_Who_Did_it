@@ -60,9 +60,15 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         TextView tatv = findViewById(R.id.tv_main_total_answers);
         String totalAnswersNumber = (String) (tatv.getText());
 
+        TextView pointsTV = findViewById(R.id.tv_game_points_number);
+        String finalScore= (String) pointsTV.getText();
+
+        TextView levelTV=findViewById(R.id.tv_game_level_number);
+        String level=(String) levelTV.getText();
+
         Intent summaryIntent= new Intent(GameActivity.this, FinishedGameSummary.class);
-        summaryIntent.putExtra("Correct Answers",correctAnswersNumber);
-        summaryIntent.putExtra("Total Answers",totalAnswersNumber);
+        summaryIntent.putExtra("Final Score",finalScore);
+        summaryIntent.putExtra("Level",level);
         startActivity(summaryIntent);
     }
 
