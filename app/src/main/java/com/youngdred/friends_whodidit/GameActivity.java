@@ -18,6 +18,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     int answerSelected=-1;
     int currentQuestionIndex=0;
+    int mistakes=0;
 
     private final Question[] questionBank=new Question[]{
         new Question("Who said \"we were on a break\"","Chandler","Ross","Monica",
@@ -134,6 +135,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         if(correct){
             correctAnswersTV.setText(String.valueOf(correctAnswers+1));
             updatePoints();
+        }else{
+            mistakes++;
         }
         totalAnswersTV.setText(String.valueOf(totalAnswers+1));
 
@@ -183,6 +186,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    public void checkMistakes(){
+        if(mistakes>=3){
+            endGameMethod();
+        }
+    }
 
     @Override
     public void onClick(View view) {
@@ -215,6 +223,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
 
+            checkMistakes();
             nextLevel();
             updateQuestion();
 
