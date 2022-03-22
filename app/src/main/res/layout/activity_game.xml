@@ -19,13 +19,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/ll_game_pll_stats"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_game_stats"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:background="#FFFFFF"
-        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -34,29 +33,59 @@
             android:id="@+id/tv_game_points_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/points_zero"
+            android:layout_marginStart="56dp"
+            android:text="@string/points"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_game_points_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/zero"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_game_points_text"
+            app:layout_constraintStart_toStartOf="@id/tv_game_points_text"
+            app:layout_constraintTop_toBottomOf="@id/tv_game_points_text" />
 
         <ImageView
             android:id="@+id/iv_game_lives_left"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
             android:contentDescription="@string/lives_left"
-            android:scaleType="centerCrop"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:layout_constraintBottom_toBottomOf="@+id/tv_game_points_number"
+            app:layout_constraintStart_toEndOf="@+id/tv_game_points_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
-            android:id="@+id/tv_game_level"
+            android:id="@+id/tv_game_level_text"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/level_one"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:text="@string/level"
             android:textAlignment="center"
-            android:textSize="20sp" />
-    </LinearLayout>
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_game_points_number"
+            app:layout_constraintStart_toEndOf="@+id/iv_game_lives_left"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_game_level_number"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="@string/one"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_game_lives_left"
+            app:layout_constraintEnd_toEndOf="@+id/tv_game_level_text"
+            app:layout_constraintStart_toStartOf="@+id/tv_game_level_text"
+            app:layout_constraintTop_toBottomOf="@+id/tv_game_level_text" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_main_question_text"
@@ -71,7 +100,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ll_game_pll_stats" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout_game_stats" />
 
     <TextView
         android:id="@+id/tv_main_correct_answers"
@@ -199,4 +228,5 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_main_end_game"
         app:layout_constraintStart_toEndOf="@+id/tv_main_total_answers"
         app:layout_constraintTop_toTopOf="@+id/btn_main_end_game" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,8 +11,8 @@
     <string name="background_image">Background Image</string>
     <string name="lives_left">Number of Lives Left</string>
 
-    <string name="level_one">Level<br></br>1</string>
-    <string name="points_zero">Points<br></br>0</string>
+    <string name="level">Level</string>
+    <string name="one">1</string>
     <string name="question">This is an example question for this game.</string>
 
     <string name="play_game">Play Game</string>
