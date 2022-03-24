@@ -1,4 +1,4 @@
-package com.youngdred.friends_whodidit;
+package com.youngdredstudios.friends_whodidit;
 
 import android.content.Context;
 

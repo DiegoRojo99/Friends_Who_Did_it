@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.youngdred.friends_whodidit">
+    package="com.youngdredstudios.friends_whodidit">
 
     <application
         android:allowBackup="true"
@@ -11,22 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Friends_WhoDidIt">
         <activity
-            android:name=".NextLevelActivity"
+            android:name="com.youngdredstudios.friends_whodidit.NextLevelActivity"
             android:exported="true" />
         <activity
-            android:name=".StatsActivity"
+            android:name="com.youngdredstudios.friends_whodidit.StatsActivity"
             android:exported="true" />
         <activity
-            android:name=".LeaderboardActivity"
+            android:name="com.youngdredstudios.friends_whodidit.LeaderboardActivity"
             android:exported="true" />
         <activity
-            android:name=".FinishedGameSummary"
+            android:name="com.youngdredstudios.friends_whodidit.FinishedGameSummary"
             android:exported="true" />
         <activity
-            android:name=".GameActivity"
+            android:name="com.youngdredstudios.friends_whodidit.GameActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.youngdredstudios.friends_whodidit.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

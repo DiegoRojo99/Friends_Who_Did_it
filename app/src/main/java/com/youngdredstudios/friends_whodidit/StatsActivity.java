@@ -1,8 +1,10 @@
-package com.youngdred.friends_whodidit;
+package com.youngdredstudios.friends_whodidit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.youngdredstudios.friends_whodidit.R;
 
 public class StatsActivity extends AppCompatActivity {
 

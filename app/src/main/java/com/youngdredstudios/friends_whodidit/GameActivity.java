@@ -1,11 +1,11 @@
-package com.youngdred.friends_whodidit;
+package com.youngdredstudios.friends_whodidit;
 
-import static com.youngdred.friends_whodidit.R.drawable.chandler;
-import static com.youngdred.friends_whodidit.R.drawable.joey;
-import static com.youngdred.friends_whodidit.R.drawable.monica;
-import static com.youngdred.friends_whodidit.R.drawable.phoebe;
-import static com.youngdred.friends_whodidit.R.drawable.rachel;
-import static com.youngdred.friends_whodidit.R.drawable.ross;
+import static com.youngdredstudios.friends_whodidit.R.drawable.chandler;
+import static com.youngdredstudios.friends_whodidit.R.drawable.joey;
+import static com.youngdredstudios.friends_whodidit.R.drawable.monica;
+import static com.youngdredstudios.friends_whodidit.R.drawable.phoebe;
+import static com.youngdredstudios.friends_whodidit.R.drawable.rachel;
+import static com.youngdredstudios.friends_whodidit.R.drawable.ross;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +13,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+
+import com.youngdredstudios.friends_whodidit.R;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 

@@ -1,4 +1,4 @@
-package com.youngdred.friends_whodidit;
+package com.youngdredstudios.friends_whodidit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
+import com.youngdredstudios.friends_whodidit.R;
 import java.io.File;
 
 public class FinishedGameSummary extends AppCompatActivity implements View.OnClickListener {

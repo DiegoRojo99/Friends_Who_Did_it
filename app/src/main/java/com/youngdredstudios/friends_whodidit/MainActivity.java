@@ -1,10 +1,12 @@
-package com.youngdred.friends_whodidit;
+package com.youngdredstudios.friends_whodidit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
+import com.youngdredstudios.friends_whodidit.R;
 
 public class MainActivity extends AppCompatActivity {
 

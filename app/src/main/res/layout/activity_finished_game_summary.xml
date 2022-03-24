@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FinishedGameSummary">
+    tools:context="com.youngdredstudios.friends_whodidit.FinishedGameSummary">
 
     <ImageView
         android:id="@+id/iv_summary_photo_background"

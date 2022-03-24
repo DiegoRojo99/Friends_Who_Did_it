@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StatsActivity">
+    tools:context="com.youngdredstudios.friends_whodidit.StatsActivity">
 
     <ProgressBar
         android:id="@+id/progress_bar_stats"
