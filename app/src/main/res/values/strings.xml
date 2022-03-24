@@ -41,6 +41,9 @@
     <string name="player_name">Young Dred</string>
     <string name="player_name_text">Player Name</string>
     <string name="points">Points</string>
+    <string name="highest_final_score">Highest Final Score</string>
+    <string name="number_times_played">Number Times Played</string>
+    <string name="reset_stats">Reset Stats</string>
 
 
 </resources>

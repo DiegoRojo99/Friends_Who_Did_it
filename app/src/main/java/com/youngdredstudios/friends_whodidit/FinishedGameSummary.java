@@ -19,6 +19,7 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_finished_game_summary);
 
         updateStats();
+        saveStats();
 
         Button mainMenuButton = findViewById(R.id.btn_summary_main_menu);
         Button newGameButton = findViewById(R.id.btn_summary_new_game);
@@ -53,15 +54,31 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
 
     public void saveStats(){
         Intent mainIntent=getIntent();
-        String correctAnswers=mainIntent.getStringExtra("Correct Answers");
-        String totalAnswers=mainIntent.getStringExtra("Total Answers");
+        String totalPoints=mainIntent.getStringExtra("Final Score");
+        String levelString=mainIntent.getStringExtra("Level");
 
-        String username= "Young Dred";
-        int points=10*(Integer.parseInt(correctAnswers));
-        Game gameStats = new Game(username,points);
+        int points=(Integer.parseInt(totalPoints));
+        int level=(Integer.parseInt(levelString));
 
         File path=getApplicationContext().getFilesDir();
         File fileToSave= new File(path, "stats.txt");
+
+        FileReaderAndWriter fr= new FileReaderAndWriter();
+        Game gameStats=new Game(level,points);
+        fr.writeGame(fileToSave, gameStats);
+    }
+
+/*
+    public void saveGameStats(){
+        Intent mainIntent=getIntent();
+        String totalPoints=mainIntent.getStringExtra("Final Score");
+        String levelString=mainIntent.getStringExtra("Level");
+
+        int points=(Integer.parseInt(totalPoints));
+        int level=(Integer.parseInt(levelString));
+
+        File path=getApplicationContext().getFilesDir();
+        File fileToSave= new File(path, "gameRecords.txt");
 
         FileReaderAndWriter fr= new FileReaderAndWriter();
         fr.writeGame(fileToSave, gameStats);
@@ -69,7 +86,7 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
         Intent sendToStats= new Intent(FinishedGameSummary.this, LeaderboardActivity.class);
         startActivity(sendToStats);
     }
-
+*/
 
     @Override
     public void onClick(View view) {

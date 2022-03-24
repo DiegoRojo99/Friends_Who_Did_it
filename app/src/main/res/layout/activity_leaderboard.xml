@@ -48,15 +48,15 @@
             android:layout_marginBottom="16dp">
 
             <TextView
-                android:id="@+id/tv_stats_header_name"
+                android:id="@+id/tv_leaderboard_header_level"
                 android:layout_weight="1"
-                android:text="@string/player_name_text"
+                android:text="@string/level"
                 android:textAlignment="center"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_stats_header_points"
+                android:id="@+id/tv_leaderboard_header_points"
                 android:layout_weight="1"
                 android:text="@string/points"
                 android:textAlignment="center"
@@ -70,14 +70,14 @@
             android:layout_marginBottom="8dp">
 
             <TextView
-                android:id="@+id/tv_stats_first_player_name"
+                android:id="@+id/tv_leaderboard_first_player_level"
                 android:layout_weight="1"
                 android:text="@string/player_name"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/tv_stats_first_player_points"
+                android:id="@+id/tv_leaderboard_first_player_points"
                 android:layout_weight="1"
 
                 android:text="@string/zero"
@@ -92,14 +92,14 @@
             android:layout_marginBottom="8dp">
 
             <TextView
-                android:id="@+id/tv_stats_second_player_name"
+                android:id="@+id/tv_leaderboard_second_player_name"
                 android:layout_weight="1"
                 android:text="@string/player_name"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/tv_stats_second_player_points"
+                android:id="@+id/tv_leaderboard_second_player_points"
                 android:layout_weight="1"
 
                 android:text="@string/zero"
@@ -114,14 +114,14 @@
             android:layout_marginBottom="8dp">
 
             <TextView
-                android:id="@+id/tv_stats_third_player_name"
+                android:id="@+id/tv_leaderboard_third_player_name"
                 android:layout_weight="1"
                 android:text="@string/player_name"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/tv_stats_third_player_points"
+                android:id="@+id/tv_leaderboard_third_player_points"
                 android:layout_weight="1"
 
                 android:text="@string/zero"
@@ -136,14 +136,14 @@
             android:layout_marginBottom="8dp">
 
             <TextView
-                android:id="@+id/tv_stats_fourth_player_name"
+                android:id="@+id/tv_leaderboard_fourth_player_name"
                 android:layout_weight="1"
                 android:text="@string/player_name"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/tv_stats_fourth_player_points"
+                android:id="@+id/tv_leaderboard_fourth_player_points"
                 android:layout_weight="1"
 
                 android:text="@string/zero"
@@ -158,14 +158,14 @@
             android:layout_marginBottom="8dp">
 
             <TextView
-                android:id="@+id/tv_stats_fifth_player_name"
+                android:id="@+id/tv_leaderboard_fifth_player_name"
                 android:layout_weight="1"
                 android:text="@string/player_name"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/tv_stats_fifth_player_points"
+                android:id="@+id/tv_leaderboard_fifth_player_points"
                 android:layout_weight="1"
 
                 android:text="@string/zero"

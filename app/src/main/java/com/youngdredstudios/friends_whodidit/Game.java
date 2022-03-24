@@ -16,19 +16,19 @@ public class Game implements Serializable {
 
     private static final long serialVersionUID = 8736847634070552888L;
 
-    String username;
+    int level;
     int points;
 
-    public Game(String username, int points) {
-        this.username = username;
+    public Game(int level, int points) {
+        this.level = level;
         this.points = points;
     }
 
-    public String getUsername() {
-        return username;
+    public int getLevel() {
+        return level;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLevel(int level) {
+        this.level = Game.this.level;
     }
     public int getPoints() {
         return points;

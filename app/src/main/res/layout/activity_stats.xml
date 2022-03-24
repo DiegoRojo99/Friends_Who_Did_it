@@ -6,37 +6,62 @@
     android:layout_height="match_parent"
     tools:context="com.youngdredstudios.friends_whodidit.StatsActivity">
 
-    <ProgressBar
-        android:id="@+id/progress_bar_stats"
-        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
+    <TextView
+        android:id="@+id/tv_stats_highest_record_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:progress="78"
+        android:layout_marginTop="32dp"
+        android:textSize="24sp"
+        android:text="@string/highest_final_score"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_stats_percentage_text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="8dp"
-        android:text="@string/app_name"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_stats"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/progress_bar_stats"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_stats_highest_record_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginTop="32dp"
+        android:textSize="48sp"
+        android:textAlignment="center"
         android:text="@string/zero"
-        app:layout_constraintBottom_toBottomOf="@+id/progress_bar_stats"
-        app:layout_constraintEnd_toEndOf="@+id/progress_bar_stats"
-        app:layout_constraintStart_toStartOf="@+id/progress_bar_stats"
-        app:layout_constraintTop_toTopOf="@+id/progress_bar_stats" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_stats_highest_record_text"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_stats_number_times_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:textSize="24sp"
+        android:text="@string/number_times_played"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_stats_highest_record_info"
+        />
+
+    <TextView
+        android:id="@+id/tv_stats_number_times_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textSize="48sp"
+        android:textAlignment="center"
+        android:text="@string/zero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_stats_number_times_text"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_stats_reset_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_stats"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="64dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_stats_number_times_info" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
