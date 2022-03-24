@@ -1,18 +1,42 @@
 package com.youngdredstudios.friends_whodidit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 public class LeaderboardActivity extends AppCompatActivity {
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    TextView firstPlayerLevel, firstPlayerPoints, secondPlayerLevel, secondPlayerPoints;
+    TextView thirdPlayerLevel, thirdPlayerPoints, fourthPlayerLevel, fourthPlayerPoints;
+    TextView fifthPlayerLevel, fifthPlayerPoints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
+
+        updateLeaderboard();
+
+    }
+
+    public void updateLeaderboard(){
 
         TextView firstPlayerLevel=findViewById(R.id.tv_leaderboard_first_player_level);
         TextView firstPlayerPoints=findViewById(R.id.tv_leaderboard_first_player_points);
@@ -29,32 +53,47 @@ public class LeaderboardActivity extends AppCompatActivity {
         TextView fifthPlayerLevel=findViewById(R.id.tv_leaderboard_fifth_player_name);
         TextView fifthPlayerPoints=findViewById(R.id.tv_leaderboard_fifth_player_points);
 
+        db.collection("games")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    private String TAG="TAG_DB_MANAGER";
+                    Map<String,Object> map=new HashMap<>();
+                    int index=0;
+                    String p="",l="";
 
-        try {
-            File path=getApplicationContext().getFilesDir();
-            File fileToSave= new File(path, "stats.txt");
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                map=document.getData();Collection c=map.values();
+                                Object[] valores=c.toArray();
+                                l=(valores[0].toString());
+                                p=(valores[1].toString());
 
-            Game[] ranking=getGameStats(fileToSave);
+                                if(index==0){
+                                    firstPlayerLevel.setText(l);
+                                    firstPlayerPoints.setText(p);
+                                }else if(index==1){
+                                    secondPlayerLevel.setText(l);
+                                    secondPlayerPoints.setText(p);
+                                }else if(index==2){
+                                    thirdPlayerLevel.setText(l);
+                                    thirdPlayerPoints.setText(p);
+                                }else if(index==3){
+                                    fourthPlayerLevel.setText(l);
+                                    fourthPlayerPoints.setText(p);
+                                }else if(index==4){
+                                    fifthPlayerLevel.setText(l);
+                                    fifthPlayerPoints.setText(p);
+                                }
+                                index++;
+                            }
+                        }
 
-            firstPlayerLevel.setText(String.valueOf(ranking[0].level));
-            firstPlayerPoints.setText(String.valueOf(ranking[0].getPoints()));
-
-            secondPlayerLevel.setText(String.valueOf(ranking[1].level));
-            secondPlayerPoints.setText(String.valueOf(ranking[1].getPoints()));
-
-            thirdPlayerLevel.setText(String.valueOf(ranking[2].level));
-            thirdPlayerPoints.setText(String.valueOf(ranking[2].getPoints()));
-
-            fourthPlayerLevel.setText(String.valueOf(ranking[3].level));
-            fourthPlayerPoints.setText(String.valueOf(ranking[3].getPoints()));
-
-            fifthPlayerLevel.setText(String.valueOf(ranking[4].level));
-            fifthPlayerPoints.setText(String.valueOf(ranking[4].getPoints()));
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+                    }
+                });
     }
+
 
     public static Game[] getGameStats(File file){
 

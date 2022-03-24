@@ -1,5 +1,6 @@
 package com.youngdredstudios.friends_whodidit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,18 +9,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.youngdredstudios.friends_whodidit.R;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FinishedGameSummary extends AppCompatActivity implements View.OnClickListener {
 
+    FirebaseFirestore db= FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_finished_game_summary);
 
         updateStats();
-        saveStats();
+        addGameToDB();
 
         Button mainMenuButton = findViewById(R.id.btn_summary_main_menu);
         Button newGameButton = findViewById(R.id.btn_summary_new_game);
@@ -50,6 +58,34 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
         finalScoreNumber.setText(finalScore);
         levelNumber.setText(level);
 
+    }
+
+    public void addGameToDB(){
+
+        Intent mainIntent=getIntent();
+        String totalPoints=mainIntent.getStringExtra("Final Score");
+        String levelString=mainIntent.getStringExtra("Level");
+
+        int points=(Integer.parseInt(totalPoints));
+        int level=(Integer.parseInt(levelString));
+
+        Map<String,Object> game=new HashMap<>();
+        game.put("level",level);
+        game.put("points",points);
+
+        db.collection("games")
+                .add(game)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
     }
 
     public void saveStats(){

@@ -24,6 +24,7 @@ public class Game implements Serializable {
         this.points = points;
     }
 
+
     public int getLevel() {
         return level;
     }
@@ -37,5 +38,12 @@ public class Game implements Serializable {
         this.points = points;
     }
 
+    @Override
+    public String toString() {
+        return "Game{" +
+                "level=" + level +
+                ", points=" + points +
+                '}';
+    }
 
 }
