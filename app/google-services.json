@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "770587819766",
+    "project_id": "friends-who-did-it",
+    "storage_bucket": "friends-who-did-it.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770587819766:android:d5742f97d791beb56cb6d7",
+        "android_client_info": {
+          "package_name": "com.youngdredstudios.friends_whodidit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770587819766-s25uali09f96f45usr782qutt9g4sd7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlR_vVxWTp7sY6uPCIPLWhwKJfMZChLnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770587819766-s25uali09f96f45usr782qutt9g4sd7u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770587819766:android:95402c5b9c2b261b6cb6d7",
+        "android_client_info": {
+          "package_name": "com.youngdredstudios.friends_whodidit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770587819766-s25uali09f96f45usr782qutt9g4sd7u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlR_vVxWTp7sY6uPCIPLWhwKJfMZChLnI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770587819766-s25uali09f96f45usr782qutt9g4sd7u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
