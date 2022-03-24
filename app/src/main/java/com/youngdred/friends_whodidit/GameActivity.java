@@ -49,6 +49,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
     int bankSize=questionBank.length;
 
+    private ImageView life1Image, life2Image, life3Image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -189,6 +191,32 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void checkMistakes(){
         if(mistakes>=3){
             endGameMethod();
+        }else if(mistakes==0){
+            updateLivesLeft(3);
+        }else if(mistakes==1){
+            updateLivesLeft(2);
+        }else if(mistakes==2){
+            updateLivesLeft(1);
+        }
+    }
+
+    public void updateLivesLeft(int livesLeft){
+        life1Image=(ImageView) findViewById(R.id.iv_game_lives_left_1);
+        life2Image=(ImageView) findViewById(R.id.iv_game_lives_left_2);
+        life3Image=(ImageView) findViewById(R.id.iv_game_lives_left_3);
+
+        if (livesLeft==3){
+            life1Image.setImageResource(R.drawable.full_heart);
+            life2Image.setImageResource(R.drawable.full_heart);
+            life3Image.setImageResource(R.drawable.full_heart);
+        }else if(livesLeft==2){
+            life1Image.setImageResource(R.drawable.full_heart);
+            life2Image.setImageResource(R.drawable.full_heart);
+            life3Image.setImageResource(R.drawable.empty_heart);
+        }else if(livesLeft==1){
+            life1Image.setImageResource(R.drawable.full_heart);
+            life2Image.setImageResource(R.drawable.empty_heart);
+            life3Image.setImageResource(R.drawable.empty_heart);
         }
     }
 

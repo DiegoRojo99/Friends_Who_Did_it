@@ -51,26 +51,46 @@
             app:layout_constraintTop_toBottomOf="@id/tv_game_points_text" />
 
         <ImageView
-            android:id="@+id/iv_game_lives_left"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_marginStart="40dp"
+            android:id="@+id/iv_game_lives_left_1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="60dp"
             android:contentDescription="@string/lives_left"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_game_points_number"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_game_points_text"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:srcCompat="@drawable/full_heart" />
+        <ImageView
+            android:id="@+id/iv_game_lives_left_2"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/lives_left"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_game_lives_left_1"
+            app:srcCompat="@drawable/full_heart" />
+        <ImageView
+            android:id="@+id/iv_game_lives_left_3"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/lives_left"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_game_lives_left_2"
+            app:srcCompat="@drawable/full_heart" />
 
         <TextView
             android:id="@+id/tv_game_level_text"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="60dp"
             android:text="@string/level"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_game_points_number"
-            app:layout_constraintStart_toEndOf="@+id/iv_game_lives_left"
+            app:layout_constraintStart_toEndOf="@+id/iv_game_lives_left_3"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -80,7 +100,7 @@
             android:text="@string/one"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_game_lives_left"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_game_points_number"
             app:layout_constraintEnd_toEndOf="@+id/tv_game_level_text"
             app:layout_constraintStart_toStartOf="@+id/tv_game_level_text"
             app:layout_constraintTop_toBottomOf="@+id/tv_game_level_text" />
