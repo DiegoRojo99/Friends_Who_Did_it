@@ -52,6 +52,9 @@
     <string name="password_olvidada">Forgot Your Password?</string>
     <string name="username">Username</string>
     <string name="register">Register</string>
+    <string name="already_logged_in">Already Logged in?</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_out">Sign Out</string>
 
 
 </resources>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class RegisterActivity extends AppCompatActivity {
 
     EditText usernameEt, passwordET, emailET;
+
+    TextView alreadyLoggedInTV;
 
     private FirebaseAuth mAuth;
 
@@ -33,6 +36,14 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerButton=(Button) findViewById(R.id.btn_register_register);
         registerButton.setOnClickListener(view -> registerUser());
+
+        alreadyLoggedInTV=(TextView) findViewById(R.id.tv_register_already_logged_in);
+        registerButton.setOnClickListener(view -> goToLogin());
+    }
+
+    public void goToLogin(){
+        Intent loginIntent=new Intent(RegisterActivity.this,LoginActivity.class);
+        startActivity(loginIntent);
     }
 
     public void registerUser(){
@@ -76,6 +87,6 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
-        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+        goToLogin();
     }
 }

@@ -32,7 +32,7 @@
         android:id="@+id/btn_main_leaderboard"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="@string/leaderboard"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/btn_main_achievement"
@@ -43,7 +43,7 @@
         android:id="@+id/btn_main_stats"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="@string/stats"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="@+id/btn_main_leaderboard"
@@ -54,12 +54,37 @@
         android:id="@+id/btn_main_achievement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="@string/achievements"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_stats" />
+
+    <Button
+        android:id="@+id/btn_main_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/log_in"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_achievement"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_achievement"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_achievement" />
+
+    <Button
+        android:id="@+id/btn_main_signout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/sign_out"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_achievement"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_achievement"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_achievement" />
 
     <TextView
         android:id="@+id/tv_main_game_title"

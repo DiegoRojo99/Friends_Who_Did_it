@@ -76,6 +76,17 @@
         app:layout_constraintStart_toStartOf="@+id/et_register_password"
         app:layout_constraintTop_toBottomOf="@+id/et_register_password" />
 
+    <TextView
+        android:id="@+id/tv_register_already_logged_in"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="@string/already_logged_in"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/btn_register_register"
+        app:layout_constraintStart_toStartOf="@+id/btn_register_register"
+        app:layout_constraintTop_toBottomOf="@id/btn_register_register" />
+
     <ProgressBar
         android:id="@+id/progressBarRegistrar"
         style="?android:attr/progressBarStyleLarge"
