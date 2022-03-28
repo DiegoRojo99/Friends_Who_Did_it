@@ -37,7 +37,6 @@
 
 
     <string name="save_stats">Save Stats</string>
-    <string name="username">Username</string>
     <string name="player_name">Young Dred</string>
     <string name="player_name_text">Player Name</string>
     <string name="points">Points</string>
@@ -47,6 +46,12 @@
     <string name="achievement_title">Achievement Title</string>
     <string name="achievement_description">Achievement Description</string>
     <string name="achievements">Achievements</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="password">Password</string>
+    <string name="iniciar_sesion">Sign in</string>
+    <string name="password_olvidada">Forgot Your Password?</string>
+    <string name="username">Username</string>
+    <string name="register">Register</string>
 
 
 </resources>

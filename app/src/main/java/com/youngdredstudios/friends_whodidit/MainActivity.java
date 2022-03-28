@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkStats(){
-        Intent statsIntent= new Intent(MainActivity.this, StatsActivity.class);
+        Intent statsIntent= new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(statsIntent);
     }
 
