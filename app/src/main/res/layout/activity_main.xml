@@ -30,13 +30,13 @@
 
     <Button
         android:id="@+id/btn_main_leaderboard"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="@string/leaderboard"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_main_achievement"
+        app:layout_constraintStart_toStartOf="@+id/btn_main_achievement"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_play_game" />
 
     <Button
@@ -50,6 +50,17 @@
         app:layout_constraintStart_toStartOf="@+id/btn_main_leaderboard"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_leaderboard" />
 
+    <Button
+        android:id="@+id/btn_main_achievement"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/achievements"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_stats" />
+
     <TextView
         android:id="@+id/tv_main_game_title"
         android:layout_width="wrap_content"
@@ -61,4 +72,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

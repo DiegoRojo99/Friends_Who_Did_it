@@ -44,6 +44,9 @@
     <string name="highest_final_score">Highest Final Score</string>
     <string name="number_times_played">Number Times Played</string>
     <string name="reset_stats">Reset Stats</string>
+    <string name="achievement_title">Achievement Title</string>
+    <string name="achievement_description">Achievement Description</string>
+    <string name="achievements">Achievements</string>
 
 
 </resources>

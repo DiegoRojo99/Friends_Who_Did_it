@@ -18,10 +18,12 @@ public class MainActivity extends AppCompatActivity {
         Button playGameButton = findViewById(R.id.btn_main_play_game);
         Button checkLeaderboardButton = findViewById(R.id.btn_main_leaderboard);
         Button checkStatsButton = findViewById(R.id.btn_main_stats);
+        Button achievementsButton = findViewById(R.id.btn_main_achievement);
 
         playGameButton.setOnClickListener(view -> playGame());
         checkLeaderboardButton.setOnClickListener(view -> checkLeaderboard());
         checkStatsButton.setOnClickListener(view -> checkStats());
+        achievementsButton.setOnClickListener(view -> checkAchievements());
     }
 
     public void playGame(){
@@ -37,5 +39,10 @@ public class MainActivity extends AppCompatActivity {
     public void checkStats(){
         Intent statsIntent= new Intent(MainActivity.this, StatsActivity.class);
         startActivity(statsIntent);
+    }
+
+    public void checkAchievements(){
+        Intent achieveIntent= new Intent(MainActivity.this, AchievementActivity.class);
+        startActivity(achieveIntent);
     }
 }

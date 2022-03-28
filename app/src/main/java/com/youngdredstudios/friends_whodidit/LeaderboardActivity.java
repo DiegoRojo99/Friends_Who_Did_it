@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -23,14 +26,15 @@ import java.util.Objects;
 public class LeaderboardActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    TextView firstPlayerLevel, firstPlayerPoints, secondPlayerLevel, secondPlayerPoints;
-    TextView thirdPlayerLevel, thirdPlayerPoints, fourthPlayerLevel, fourthPlayerPoints;
-    TextView fifthPlayerLevel, fifthPlayerPoints;
+
+    ProgressBar pbLeaderboard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
+
+        pbLeaderboard=(ProgressBar)findViewById(R.id.progress_bar_leaderboard);
 
         updateLeaderboard();
 
@@ -54,9 +58,10 @@ public class LeaderboardActivity extends AppCompatActivity {
         TextView fifthPlayerPoints=findViewById(R.id.tv_leaderboard_fifth_player_points);
 
         db.collection("games")
+                .orderBy("points", Query.Direction.DESCENDING)
+                .limit(5)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    private String TAG="TAG_DB_MANAGER";
                     Map<String,Object> map=new HashMap<>();
                     int index=0;
                     String p="",l="";
@@ -65,10 +70,8 @@ public class LeaderboardActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                map=document.getData();Collection c=map.values();
-                                Object[] valores=c.toArray();
-                                l=(valores[0].toString());
-                                p=(valores[1].toString());
+                                Object[] valores=document.getData().values().toArray();
+                                l=(valores[0].toString()); p=(valores[1].toString());
 
                                 if(index==0){
                                     firstPlayerLevel.setText(l);
@@ -92,6 +95,8 @@ public class LeaderboardActivity extends AppCompatActivity {
 
                     }
                 });
+
+        pbLeaderboard.setVisibility(View.GONE);
     }
 
 

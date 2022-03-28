@@ -11,22 +11,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Friends_WhoDidIt">
         <activity
-            android:name="com.youngdredstudios.friends_whodidit.NextLevelActivity"
+            android:name=".AchievementActivity"
             android:exported="true" />
         <activity
-            android:name="com.youngdredstudios.friends_whodidit.StatsActivity"
+            android:name=".NextLevelActivity"
             android:exported="true" />
         <activity
-            android:name="com.youngdredstudios.friends_whodidit.LeaderboardActivity"
+            android:name=".StatsActivity"
             android:exported="true" />
         <activity
-            android:name="com.youngdredstudios.friends_whodidit.FinishedGameSummary"
+            android:name=".LeaderboardActivity"
             android:exported="true" />
         <activity
-            android:name="com.youngdredstudios.friends_whodidit.GameActivity"
+            android:name=".FinishedGameSummary"
             android:exported="true" />
         <activity
-            android:name="com.youngdredstudios.friends_whodidit.MainActivity"
+            android:name=".GameActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

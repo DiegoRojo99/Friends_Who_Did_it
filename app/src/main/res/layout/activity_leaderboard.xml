@@ -72,14 +72,13 @@
             <TextView
                 android:id="@+id/tv_leaderboard_first_player_level"
                 android:layout_weight="1"
-                android:text="@string/player_name"
+                android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_leaderboard_first_player_points"
                 android:layout_weight="1"
-
                 android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -94,14 +93,13 @@
             <TextView
                 android:id="@+id/tv_leaderboard_second_player_name"
                 android:layout_weight="1"
-                android:text="@string/player_name"
+                android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_leaderboard_second_player_points"
                 android:layout_weight="1"
-
                 android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -116,14 +114,13 @@
             <TextView
                 android:id="@+id/tv_leaderboard_third_player_name"
                 android:layout_weight="1"
-                android:text="@string/player_name"
+                android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_leaderboard_third_player_points"
                 android:layout_weight="1"
-
                 android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -138,14 +135,13 @@
             <TextView
                 android:id="@+id/tv_leaderboard_fourth_player_name"
                 android:layout_weight="1"
-                android:text="@string/player_name"
+                android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_leaderboard_fourth_player_points"
                 android:layout_weight="1"
-
                 android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -160,14 +156,13 @@
             <TextView
                 android:id="@+id/tv_leaderboard_fifth_player_name"
                 android:layout_weight="1"
-                android:text="@string/player_name"
+                android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/tv_leaderboard_fifth_player_points"
                 android:layout_weight="1"
-
                 android:text="@string/zero"
                 android:textAlignment="center"
                 android:textSize="24sp" />
@@ -176,4 +171,15 @@
 
 
     </TableLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_leaderboard"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
