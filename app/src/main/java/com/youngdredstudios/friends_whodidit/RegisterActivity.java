@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -112,11 +113,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         userToInsert.put("UserId",user.getUid());
         userToInsert.put("Username",u.nombre);
-        userToInsert.put("Email",user.getEmail());
+        userToInsert.put("Email",u.email);
 
-        db.collection("users")
+
+        db.collection("usernames")
                 .add(userToInsert)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                     }
@@ -124,7 +127,6 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
                     }
                 });
     }

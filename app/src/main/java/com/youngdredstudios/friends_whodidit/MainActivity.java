@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth=FirebaseAuth.getInstance();
 
-
         playGameButton = findViewById(R.id.btn_main_play_game);
         checkLeaderboardButton = findViewById(R.id.btn_main_leaderboard);
         checkStatsButton = findViewById(R.id.btn_main_stats);
