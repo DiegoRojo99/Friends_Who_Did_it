@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
         if(password.length()<6){
-            etPassword.setError("Password has to be at leadt 6 characters long");
+            etPassword.setError("Password has to be at least 6 characters long");
             etPassword.requestFocus();
             return;
         }
