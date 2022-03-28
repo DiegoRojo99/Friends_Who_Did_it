@@ -42,20 +42,24 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(view -> goToLogin());
         signoutButton.setOnClickListener(view -> signOut());
 
-        checkUserLoggedIn();
+        //checkUserLoggedIn();
     }
 
     public void checkUserLoggedIn(){
-        user=FirebaseAuth.getInstance().getCurrentUser();
-        if(user!=null){
-            if (user.isEmailVerified()){
-                loginButton.setVisibility(View.GONE);
-                signoutButton.setVisibility(View.VISIBLE);
+        mAuth=FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            user=FirebaseAuth.getInstance().getCurrentUser();
+            if(user!=null){
+                if (user.isEmailVerified()){
+                    loginButton.setVisibility(View.GONE);
+                    signoutButton.setVisibility(View.VISIBLE);
+                }else{
+                    achievementsButton.setVisibility(View.GONE);
+                }
             }else{
-                achievementsButton.setVisibility(View.GONE);
             }
-        }else{
         }
+
 
     }
 

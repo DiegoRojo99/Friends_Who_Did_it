@@ -30,35 +30,10 @@ public class StatsActivity extends AppCompatActivity implements View.OnClickList
     }
     public void updateTVs(){
 
-        try {
-            FileReaderAndWriter fr=new FileReaderAndWriter();
-            File path=getApplicationContext().getFilesDir();
-            File fileToUse= new File(path, "stats.txt");
-            String record=String.valueOf(fr.getBestRecord(fileToUse));
-            String numberTimes=String.valueOf(fr.getNumberGamesPlayed(fileToUse));
-
-            if(!record.isEmpty()){
-                recordHolderTV=(TextView) findViewById(R.id.tv_stats_highest_record_info);
-                recordHolderTV.setText(record);
-            }
-            if(!numberTimes.isEmpty()){
-                numberTimesPlayedTV=(TextView) findViewById(R.id.tv_stats_number_times_info);
-                numberTimesPlayedTV.setText(numberTimes);
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
 
     }
 
     public void resetStats(){
-        FileReaderAndWriter fr=new FileReaderAndWriter();
-        File path=getApplicationContext().getFilesDir();
-        File fileToClear= new File(path, "stats.txt");
-        fr.clearFile(fileToClear);
-
-        startActivity(new Intent(StatsActivity.this,MainActivity.class));
 
     }
 

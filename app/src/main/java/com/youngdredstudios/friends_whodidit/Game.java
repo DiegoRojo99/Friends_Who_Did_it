@@ -16,10 +16,12 @@ public class Game implements Serializable {
 
     private static final long serialVersionUID = 8736847634070552888L;
 
+    String username;
     int level;
     int points;
 
-    public Game(int level, int points) {
+    public Game(String username, int level, int points) {
+        this.username=username;
         this.level = level;
         this.points = points;
     }

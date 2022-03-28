@@ -99,12 +99,4 @@ public class LeaderboardActivity extends AppCompatActivity {
         pbLeaderboard.setVisibility(View.GONE);
     }
 
-
-    public static Game[] getGameStats(File file){
-
-        FileReaderAndWriter fraw=new FileReaderAndWriter();
-        Game[] result = fraw.loadGames(file);
-
-        return result;
-    }
 }

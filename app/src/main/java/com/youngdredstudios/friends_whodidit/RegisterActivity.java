@@ -12,10 +12,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.auth.User;
+import com.google.firebase.ktx.Firebase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -38,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(view -> registerUser());
 
         alreadyLoggedInTV=(TextView) findViewById(R.id.tv_register_already_logged_in);
-        registerButton.setOnClickListener(view -> goToLogin());
+        alreadyLoggedInTV.setOnClickListener(view -> goToLogin());
     }
 
     public void goToLogin(){
@@ -87,6 +98,35 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
+        Usuario usuario= new Usuario(username, email, password);
+        createUsername(usuario);
         goToLogin();
     }
+
+    public void createUsername(Usuario u){
+
+        FirebaseFirestore db= FirebaseFirestore.getInstance();
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+
+        Map<String,Object> userToInsert=new HashMap<>();
+
+        userToInsert.put("UserId",user.getUid());
+        userToInsert.put("Username",u.nombre);
+        userToInsert.put("Email",user.getEmail());
+
+        db.collection("users")
+                .add(userToInsert)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+    }
+
 }

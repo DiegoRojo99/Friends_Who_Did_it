@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
 
         if(v==registrar){
-            //startActivity(new Intent(this,RegisterActivity.class));
+            startActivity(new Intent(this,RegisterActivity.class));
         }else if(v==loginButton){
             loginUser();
         }else if(v==passwordOlvidada){

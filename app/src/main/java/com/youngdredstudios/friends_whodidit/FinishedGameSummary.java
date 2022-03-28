@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.youngdredstudios.friends_whodidit.R;
@@ -69,6 +71,8 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
         int points=(Integer.parseInt(totalPoints));
         int level=(Integer.parseInt(levelString));
 
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+
         Map<String,Object> game=new HashMap<>();
         game.put("level",level);
         game.put("points",points);
@@ -86,22 +90,6 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
 
                     }
                 });
-    }
-
-    public void saveStats(){
-        Intent mainIntent=getIntent();
-        String totalPoints=mainIntent.getStringExtra("Final Score");
-        String levelString=mainIntent.getStringExtra("Level");
-
-        int points=(Integer.parseInt(totalPoints));
-        int level=(Integer.parseInt(levelString));
-
-        File path=getApplicationContext().getFilesDir();
-        File fileToSave= new File(path, "stats.txt");
-
-        FileReaderAndWriter fr= new FileReaderAndWriter();
-        Game gameStats=new Game(level,points);
-        fr.writeGame(fileToSave, gameStats);
     }
 
 /*
