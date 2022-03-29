@@ -4,17 +4,25 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AchievementActivity extends AppCompatActivity {
 
@@ -133,7 +141,10 @@ public class AchievementActivity extends AppCompatActivity {
 
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
+                        ArrayList<Boolean> existUserAchievement=new ArrayList<>();
+                        for(int i=0;i<3;i++){
+                            existUserAchievement.add(false);
+                        }
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 String achievementID=document.getString("AchievementID");
@@ -141,13 +152,44 @@ public class AchievementActivity extends AppCompatActivity {
                                 int actual=Integer.parseInt(String.valueOf(document.get("ActualProgress")));
                                 boolean completed=Boolean.parseBoolean(String.valueOf(document.get("Completed")));
                                 UserAchievement userAchievement=new UserAchievement(achievementID,actual,completed,userId);
-                                if (firebaseUser != null &&userId.equals(firebaseUser.getUid())) {
+                                if (firebaseUser != null && userId.equals(firebaseUser.getUid())) {
                                     updateUserAchievement(userAchievement);
+                                    existUserAchievement.add(Integer.parseInt(userAchievement.achievementId),true);
                                 }
                             }
+                            createEmptyUserAchievement(existUserAchievement);
                         }
                     }
                 });
+
+    }
+
+    public void createEmptyUserAchievement(ArrayList<Boolean> eua){
+        FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db=FirebaseFirestore.getInstance();
+        for(int index=0;index<eua.size();index++){
+            if(!eua.get(index)){
+                Map<String,Object> userAchieve=new HashMap<>();
+                userAchieve.put("AchievementID",index);
+                userAchieve.put("Actual Progress",0);
+                userAchieve.put("Completed",false);
+                userAchieve.put("UserId",firebaseUser.getUid());
+
+                db.collection("userAchievements")
+                        .add(userAchieve)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                            @Override
+                            public void onSuccess(DocumentReference documentReference) {
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
+            }
+        }
 
     }
 }
