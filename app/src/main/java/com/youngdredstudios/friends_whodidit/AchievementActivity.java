@@ -60,7 +60,7 @@ public class AchievementActivity extends AppCompatActivity {
         pbA3=(ProgressBar)viewAchievement3.findViewById(R.id.progressBar_achievement_pct);
 
         loadAchievements();
-        loadUserAchievements();
+        loadUserAchievements(3);
 
     }
 
@@ -131,7 +131,7 @@ public class AchievementActivity extends AppCompatActivity {
         }
     }
 
-    public void loadUserAchievements(){
+    public void loadUserAchievements(int numberAchievements){
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
         FirebaseFirestore db=FirebaseFirestore.getInstance();
@@ -142,19 +142,19 @@ public class AchievementActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         ArrayList<Boolean> existUserAchievement=new ArrayList<>();
-                        for(int i=0;i<3;i++){
+                        for(int i=0;i<numberAchievements;i++){
                             existUserAchievement.add(false);
                         }
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                String achievementID=document.getString("AchievementID");
+                                String achievementID=String.valueOf(document.get("AchievementID"));
                                 String userId=document.getString("UserId");
                                 int actual=Integer.parseInt(String.valueOf(document.get("ActualProgress")));
                                 boolean completed=Boolean.parseBoolean(String.valueOf(document.get("Completed")));
                                 UserAchievement userAchievement=new UserAchievement(achievementID,actual,completed,userId);
-                                if (firebaseUser != null && userId.equals(firebaseUser.getUid())) {
+                                if (firebaseUser != null && userId.equals(firebaseUser.getUid())&& Integer.parseInt(userAchievement.achievementId)<numberAchievements) {
                                     updateUserAchievement(userAchievement);
-                                    existUserAchievement.add(Integer.parseInt(userAchievement.achievementId),true);
+                                    existUserAchievement.set(Integer.parseInt(userAchievement.achievementId),true);
                                 }
                             }
                             createEmptyUserAchievement(existUserAchievement);
@@ -171,7 +171,7 @@ public class AchievementActivity extends AppCompatActivity {
             if(!eua.get(index)){
                 Map<String,Object> userAchieve=new HashMap<>();
                 userAchieve.put("AchievementID",index);
-                userAchieve.put("Actual Progress",0);
+                userAchieve.put("ActualProgress",0);
                 userAchieve.put("Completed",false);
                 userAchieve.put("UserId",firebaseUser.getUid());
 
