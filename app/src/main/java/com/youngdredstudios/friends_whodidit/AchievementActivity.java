@@ -110,9 +110,15 @@ public class AchievementActivity extends AppCompatActivity {
         switch (Integer.parseInt(achievement.achievementId)){
             case 0:
                 pbA1.setProgress(achievement.actualProgress);
+                actProAchievement1.setText(String.valueOf(achievement.actualProgress));
                 break;
             case 1:
                 pbA2.setProgress(achievement.actualProgress);
+                actProAchievement2.setText(String.valueOf(achievement.actualProgress));
+                break;
+            case 2:
+                pbA3.setProgress(achievement.actualProgress);
+                actProAchievement3.setText(String.valueOf(achievement.actualProgress));
                 break;
         }
     }
