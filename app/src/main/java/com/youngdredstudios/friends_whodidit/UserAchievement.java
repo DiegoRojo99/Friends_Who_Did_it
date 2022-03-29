@@ -4,13 +4,13 @@ public class UserAchievement {
 
     String achievementId;
     int actualProgress;
-    int totalProgress;
     boolean completed;
+    String userId;
 
-    public UserAchievement(String achievementId, int actualProgress, int totalProgress) {
+    public UserAchievement(String achievementId, int actualProgress,boolean completed, String userId) {
         this.achievementId = achievementId;
         this.actualProgress = actualProgress;
-        this.totalProgress = totalProgress;
-        this.completed= actualProgress == totalProgress;
+        this.completed= completed;
+        this.userId=userId;
     }
 }

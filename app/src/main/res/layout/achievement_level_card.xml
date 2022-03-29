@@ -59,4 +59,14 @@
         app:layout_constraintEnd_toEndOf="@+id/progressBar_achievement_pct"
         app:layout_constraintStart_toStartOf="@+id/progressBar_achievement_pct"
         app:layout_constraintTop_toTopOf="@+id/progressBar_achievement_pct" />
+
+    <TextView
+        android:id="@+id/tv_achievement_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zero"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_achievement_logo"
+        app:layout_constraintEnd_toEndOf="@+id/iv_achievement_logo"
+        app:layout_constraintStart_toStartOf="@+id/iv_achievement_logo"
+        app:layout_constraintTop_toTopOf="@+id/iv_achievement_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>
