@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -58,15 +57,14 @@ public class AchievementActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            int ind=0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                //TODO Get values by name
-                                Object[] values=document.getData().values().toArray();
-                                Achievement achievement=new Achievement(values[0].toString(),
-                                        Integer.parseInt(values[1].toString()),values[2].toString(),
-                                        values[3].toString());
+
+                                String title=document.getString("Title");
+                                String desc=document.getString("Desc");
+                                String achievementId=document.getString("AchievementId");
+                                int totalPoints=Integer.parseInt(String.valueOf(document.get("TotalProgress")));
+                                Achievement achievement=new Achievement(desc,totalPoints,achievementId,title);
                                 updateAchievement(achievement);
-                                ind++;
                             }
                         }
                     }
