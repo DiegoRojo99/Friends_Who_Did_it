@@ -20,9 +20,10 @@ public class AchievementActivity extends AppCompatActivity {
 
 
     TextView titleAchievement1, descAchievement1, actProAchievement1, idAchievement1;
-    ProgressBar pbA1, pbA2;
+    ProgressBar pbA1, pbA2, pbA3;
     View viewAchievement1,viewAchievement2,viewAchievement3;
     TextView titleAchievement2, descAchievement2, actProAchievement2, idAchievement2;
+    TextView titleAchievement3, descAchievement3, actProAchievement3, idAchievement3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,13 @@ public class AchievementActivity extends AppCompatActivity {
         actProAchievement2=(TextView)viewAchievement2.findViewById(R.id.tv_progress_bar_achievement);
         idAchievement2=(TextView)viewAchievement2.findViewById(R.id.tv_achievement_id);
         pbA2=(ProgressBar)viewAchievement2.findViewById(R.id.progressBar_achievement_pct);
+
+        viewAchievement3=(View)findViewById(R.id.include_third_achievement);
+        titleAchievement3=(TextView)viewAchievement3.findViewById(R.id.tv_achievement_title);
+        descAchievement3=(TextView)viewAchievement3.findViewById(R.id.tv_achievement_desc);
+        actProAchievement3=(TextView)viewAchievement3.findViewById(R.id.tv_progress_bar_achievement);
+        idAchievement3=(TextView)viewAchievement3.findViewById(R.id.tv_achievement_id);
+        pbA3=(ProgressBar)viewAchievement3.findViewById(R.id.progressBar_achievement_pct);
 
         loadAchievements();
         loadUserAchievements();
@@ -89,6 +97,13 @@ public class AchievementActivity extends AppCompatActivity {
                 idAchievement2.setText(achievement.achievementId);
                 pbA2.setMax(achievement.totalProgress);
                 break;
+            case 2:
+                titleAchievement3.setText(achievement.title);
+                descAchievement3.setText(achievement.desc);
+                actProAchievement3.setText("0");
+                idAchievement3.setText(achievement.achievementId);
+                pbA3.setMax(achievement.totalProgress);
+                break;
         }
     }
     public void updateUserAchievement(UserAchievement achievement){
@@ -114,17 +129,15 @@ public class AchievementActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                         if (task.isSuccessful()) {
-                            int ind=0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Object[] values=document.getData().values().toArray();
-                                UserAchievement userAchievement=new UserAchievement(values[1].toString(),
-                                        Integer.parseInt(values[3].toString()),
-                                        Boolean.parseBoolean(values[2].toString()),
-                                        values[0].toString());
-                                if (firebaseUser != null && values[0].toString().equals(firebaseUser.getUid())) {
+                                String achievementID=document.getString("AchievementID");
+                                String userId=document.getString("UserId");
+                                int actual=Integer.parseInt(String.valueOf(document.get("ActualProgress")));
+                                boolean completed=Boolean.parseBoolean(String.valueOf(document.get("Completed")));
+                                UserAchievement userAchievement=new UserAchievement(achievementID,actual,completed,userId);
+                                if (firebaseUser != null &&userId.equals(firebaseUser.getUid())) {
                                     updateUserAchievement(userAchievement);
                                 }
-                                ind++;
                             }
                         }
                     }
