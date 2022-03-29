@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.youngdredstudios.friends_whodidit.R;
 import java.io.File;
 import java.util.HashMap;
@@ -60,6 +64,11 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
         finalScoreNumber.setText(finalScore);
         levelNumber.setText(level);
 
+        FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+
+        Game g=new Game(user.getUid(),Integer.parseInt(level),Integer.parseInt(finalScore));
+        checkAchievements(g);
+
     }
 
     public void addGameToDB(){
@@ -93,25 +102,51 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
                 });
     }
 
-/*
-    public void saveGameStats(){
-        Intent mainIntent=getIntent();
-        String totalPoints=mainIntent.getStringExtra("Final Score");
-        String levelString=mainIntent.getStringExtra("Level");
-
-        int points=(Integer.parseInt(totalPoints));
-        int level=(Integer.parseInt(levelString));
-
-        File path=getApplicationContext().getFilesDir();
-        File fileToSave= new File(path, "gameRecords.txt");
-
-        FileReaderAndWriter fr= new FileReaderAndWriter();
-        fr.writeGame(fileToSave, gameStats);
-
-        Intent sendToStats= new Intent(FinishedGameSummary.this, LeaderboardActivity.class);
-        startActivity(sendToStats);
+    public void checkAchievements(Game g){
+        checkFirstAchievement(g);
     }
-*/
+
+    public void updateFirstAchievement(UserAchievement userAchievement, Game game, String docId){
+        if(game.points>=1000){
+            db.collection("userAchievements")
+                    .document(docId)
+                    .update("Completed",true);
+            db.collection("userAchievements")
+                    .document(docId)
+                    .update("ActualProgress",1000);
+        }else if(game.points>userAchievement.actualProgress){
+            db.collection("userAchievements")
+                    .document(docId)
+                    .update("ActualProgress",game.points);
+        }
+    }
+
+    public void checkFirstAchievement(Game g){
+        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db=FirebaseFirestore.getInstance();
+        db.collection("userAchievements")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String achievementID=document.getString("AchievementID");
+                                String userId=document.getString("UserId");
+                                int actual=Integer.parseInt(String.valueOf(document.get("ActualProgress")));
+                                boolean completed=Boolean.parseBoolean(String.valueOf(document.get("Completed")));
+                                UserAchievement userAchievement=new UserAchievement(achievementID,actual,completed,userId);
+                                if (firebaseUser != null && userId.equals(firebaseUser.getUid()) && achievementID.equals("0")) {
+                                    String docId=document.getId();
+                                    updateFirstAchievement(userAchievement, g, docId);
+                                }
+                            }
+                        }
+                    }
+                });
+    }
 
     @Override
     public void onClick(View view) {
