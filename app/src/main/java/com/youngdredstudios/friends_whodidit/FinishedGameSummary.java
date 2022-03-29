@@ -104,6 +104,8 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
 
     public void checkAchievements(Game g){
         checkFirstAchievement(g);
+        checkSecondAchievement(g);
+        checkThirdAchievement(g);
     }
 
     public void updateFirstAchievement(UserAchievement userAchievement, Game game, String docId){
@@ -133,7 +135,7 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
 
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                String achievementID=document.getString("AchievementID");
+                                String achievementID=String.valueOf(document.get("AchievementID"));
                                 String userId=document.getString("UserId");
                                 int actual=Integer.parseInt(String.valueOf(document.get("ActualProgress")));
                                 boolean completed=Boolean.parseBoolean(String.valueOf(document.get("Completed")));
@@ -141,6 +143,90 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
                                 if (firebaseUser != null && userId.equals(firebaseUser.getUid()) && achievementID.equals("0")) {
                                     String docId=document.getId();
                                     updateFirstAchievement(userAchievement, g, docId);
+                                }
+                            }
+                        }
+                    }
+                });
+    }
+
+    public void updateSecondAchievement(UserAchievement userAchievement, Game game, String docId){
+        if(game.level>=5){
+            db.collection("userAchievements")
+                    .document(docId)
+                    .update("Completed",true);
+            db.collection("userAchievements")
+                    .document(docId)
+                    .update("ActualProgress",5);
+        }else if(game.level>userAchievement.actualProgress){
+            db.collection("userAchievements")
+                    .document(docId)
+                    .update("ActualProgress",game.level);
+        }
+    }
+
+    public void checkSecondAchievement(Game g){
+        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db=FirebaseFirestore.getInstance();
+        db.collection("userAchievements")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String achievementID=String.valueOf(document.get("AchievementID"));
+                                String userId=document.getString("UserId");
+                                int actual=Integer.parseInt(String.valueOf(document.get("ActualProgress")));
+                                boolean completed=Boolean.parseBoolean(String.valueOf(document.get("Completed")));
+                                UserAchievement userAchievement=new UserAchievement(achievementID,actual,completed,userId);
+                                if (firebaseUser != null && userId.equals(firebaseUser.getUid()) && achievementID.equals("1")) {
+                                    String docId=document.getId();
+                                    updateSecondAchievement(userAchievement, g, docId);
+                                }
+                            }
+                        }
+                    }
+                });
+    }
+
+    public void updateThirdAchievement(UserAchievement userAchievement, Game game, String docId){
+        if(game.level>=3){
+            db.collection("userAchievements")
+                    .document(docId)
+                    .update("Completed",true);
+            db.collection("userAchievements")
+                    .document(docId)
+                    .update("ActualProgress",3);
+        }else if(game.level>userAchievement.actualProgress){
+            db.collection("userAchievements")
+                    .document(docId)
+                    .update("ActualProgress",game.level);
+        }
+    }
+
+    public void checkThirdAchievement(Game g){
+        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseFirestore db=FirebaseFirestore.getInstance();
+        db.collection("userAchievements")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String achievementID=String.valueOf(document.get("AchievementID"));
+                                String userId=document.getString("UserId");
+                                int actual=Integer.parseInt(String.valueOf(document.get("ActualProgress")));
+                                boolean completed=Boolean.parseBoolean(String.valueOf(document.get("Completed")));
+                                UserAchievement userAchievement=new UserAchievement(achievementID,actual,completed,userId);
+                                if (firebaseUser != null && userId.equals(firebaseUser.getUid()) && achievementID.equals("2")) {
+                                    String docId=document.getId();
+                                    updateThirdAchievement(userAchievement, g, docId);
                                 }
                             }
                         }
