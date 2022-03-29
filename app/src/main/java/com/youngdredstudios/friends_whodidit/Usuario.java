@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Usuario {
 
     public String nombre, email, password;
-    public ArrayList<Achievement> achievements;
+    public ArrayList<UserAchievement> userAchievements;
     public Usuario(){
 
     }
@@ -13,6 +13,6 @@ public class Usuario {
         this.nombre=nombre;
         this.email=email;
         this.password=password;
-        this.achievements= new ArrayList<>();
+        this.userAchievements = new ArrayList<>();
     }
 }
