@@ -76,6 +76,7 @@ public class FinishedGameSummary extends AppCompatActivity implements View.OnCli
         Map<String,Object> game=new HashMap<>();
         game.put("level",level);
         game.put("points",points);
+        game.put("user",user.getUid());
 
         db.collection("games")
                 .add(game)

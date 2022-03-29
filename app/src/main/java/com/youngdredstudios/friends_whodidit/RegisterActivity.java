@@ -111,7 +111,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         Map<String,Object> userToInsert=new HashMap<>();
 
-        userToInsert.put("UserId",user.getUid());
+        //Sacar userId del user con el mismo email y guardarlo como UserID
+        //userToInsert.put("UserId",user.getUid());
         userToInsert.put("Username",u.nombre);
         userToInsert.put("Email",u.email);
 
