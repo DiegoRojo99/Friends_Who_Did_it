@@ -27,26 +27,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 "Phoebe",0,1),
             new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
                     "Rachel",1,3),
-            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
-                    "Rachel",2,3),
-            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
-                    "Rachel",3,3),
-            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
-                    "Rachel",4,3),
-            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
-                    "Rachel",5,3),
-            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
-                    "Rachel",6,3),
-            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
-                    "Rachel",7,3),
-            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
-                    "Rachel",8,3),
-            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
-                    "Rachel",9,3),
-            new Question("Who showed up on a wedding dress in the first episode","Joey","Chandler","Ross",
+            new Question("Who has \"Muriel\" as his/her middle name?","Chandler","Monica","Phoebe",
+            "Joey",2,0),
+            new Question("Who mistakenly threw someone’s wooden leg into a fire?","Chandler","Rachel","Ross",
+                    "Joey",3,3),
+            new Question("Who did not travel to London for Ross wedding?","Joey","Chandler","Phoebe",
+                    "Rachel",4,2),
+            new Question("Who does not have any siblings?","Rachel","Chandler","Phoebe",
+                    "Joey",5,1),
+            new Question("Who was Monica’s first kiss?","Ross","Chandler","Joey",
+                    "Rachel",6,0),
+            new Question("Who did not date anyone from the group?","Joey","Monica","Ross",
+                    "Phoebe",7,3),
+            new Question("Who has more siblings?","Joey","Chandler","Ross",
+                    "Rachel",8,0),
+            new Question("Who was the last Friend to find out about Monica and Chandler’s relationship?","Phoebe","Joey","Ross",
+                    "Rachel",9,2),
+            new Question("Who is the youngest?","Joey","Chandler","Phoebe",
                     "Rachel",10,3),
-            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
-                    "Rachel",11,3)
+            new Question("Who introduced Phoebe and Mike?","Joey","Chandler","Monica",
+                    "Rachel",11,1)
     };
 
     int bankSize=questionBank.length;
@@ -203,9 +203,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void updateLivesLeft(int livesLeft){
-        life1Image=(ImageView) findViewById(R.id.iv_game_lives_left_1);
-        life2Image=(ImageView) findViewById(R.id.iv_game_lives_left_2);
-        life3Image=(ImageView) findViewById(R.id.iv_game_lives_left_3);
+        life1Image= findViewById(R.id.iv_game_lives_left_1);
+        life2Image= findViewById(R.id.iv_game_lives_left_2);
+        life3Image= findViewById(R.id.iv_game_lives_left_3);
 
         if (livesLeft==3){
             life1Image.setImageResource(R.drawable.full_heart);
