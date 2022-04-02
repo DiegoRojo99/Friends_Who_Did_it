@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg3" />
+        app:srcCompat="@drawable/moonlit_asteroid" />
 
     <ImageView
         android:id="@+id/iv_achievement_cover"
