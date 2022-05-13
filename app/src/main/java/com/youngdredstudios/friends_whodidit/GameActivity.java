@@ -23,9 +23,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     int mistakes=0;
 
     private final Question[] questionBank=new Question[]{
-        new Question("Who said \"we were on a break\"","Chandler","Ross","Monica",
+        new Question("Who said \"we were on a break\"?","Chandler","Ross","Monica",
                 "Phoebe",0,1),
-            new Question("Who showed up on a wedding dress in the first episode","Monica","Chandler","Ross",
+            new Question("Who showed up on a wedding dress in the first episode?    ","Monica","Chandler","Ross",
                     "Rachel",1,3),
             new Question("Who has \"Muriel\" as his/her middle name?","Chandler","Monica","Phoebe",
             "Joey",2,0),
