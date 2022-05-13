@@ -3,6 +3,7 @@ package com.youngdredstudios.friends_whodidit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -53,7 +54,6 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         TextView fifthPlayerLevel=findViewById(R.id.tv_leaderboard_fifth_player_level);
         TextView fifthPlayerPoints=findViewById(R.id.tv_leaderboard_fifth_player_points);
-
 
         db.collection("games")
                 .orderBy("points", Query.Direction.DESCENDING)

@@ -6,7 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.youngdredstudios.friends_whodidit.StatsActivity">
 
+    <ImageView
+        android:id="@+id/iv_achievement_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/moonlit_asteroid" />
+
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/tv_stats_highest_record_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,6 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/tv_stats_highest_record_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,6 +42,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/tv_stats_number_times_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,6 +55,7 @@
         />
 
     <TextView
+        android:textColor="@color/white"
         android:id="@+id/tv_stats_number_times_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
