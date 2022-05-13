@@ -115,7 +115,8 @@ public class AchievementActivity extends AppCompatActivity {
         }
     }
     public void updateUserAchievement(UserAchievement achievement){
-        switch (Integer.parseInt(achievement.achievementId)){
+        Integer aID=Integer.parseInt(achievement.achievementId);
+        switch (aID){
             case 0:
                 pbA1.setProgress(achievement.actualProgress);
                 actProAchievement1.setText(String.valueOf(achievement.actualProgress));

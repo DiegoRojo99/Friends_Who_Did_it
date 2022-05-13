@@ -33,10 +33,10 @@
             android:id="@+id/tv_game_points_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
+            android:layout_marginStart="48dp"
             android:text="@string/points"
-            android:textSize="20sp"
             android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,8 +90,8 @@
             android:layout_marginStart="60dp"
             android:text="@string/level"
             android:textAlignment="center"
-            android:textSize="20sp"
             android:textColor="@color/black"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/tv_game_points_number"
             app:layout_constraintStart_toEndOf="@+id/iv_game_lives_left_3"
             app:layout_constraintTop_toTopOf="parent" />
