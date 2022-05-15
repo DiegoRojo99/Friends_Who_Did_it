@@ -1,8 +1,10 @@
 package com.youngdredstudios.friends_whodidit;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -79,19 +81,66 @@ public class StatsActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
-    public void updateTVs(){
+    public void goToMain(){
+        Intent mainIntent=new Intent(StatsActivity.this, MainActivity.class);
+        startActivity(mainIntent);
+    }
+    public void showAlertDialog(){
+        AlertDialog.Builder alert= new AlertDialog.Builder(this);
+            alert.setTitle("CONFIRM RESET");
+            alert.setMessage("Are you sure you want to reset your stats. All of your game stats will disappear");
+            alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
 
+                }
+            });
+            alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                resetStats();
+                goToMain();
+            }
+        });
+        alert.create().show();
+    }
+    public void deleteStats(String dID){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("games").document(dID)
+                .delete();
 
     }
 
     public void resetStats(){
+
+
+        FirebaseUser usuario= FirebaseAuth.getInstance().getCurrentUser();
+        String uid=usuario.getUid();
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("games")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Object[] valores=document.getData().values().toArray();
+                                if(valores[1].equals(uid)){
+                                    deleteStats(document.getId());
+                                }
+                            }
+                        }
+                    }
+                });
 
     }
 
     @Override
     public void onClick(View view) {
         if(view==resetStatsButton){
-            resetStats();
+            showAlertDialog();
         }
     }
 }
